@@ -59,24 +59,6 @@ The server requires the following environment variables:
 - `RAYGUN_PAT_TOKEN` (required): Your [Raygun PAT token](https://raygun.com/documentation/product-guides/raygun-api/)
 - `SOURCEMAP_ALLOWED_DIRS` (optional): Comma-separated list of directories allowed for source map operations
 
-## Usage with Claude Desktop
-
-Add to your `claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "raygun": {
-      "command": "npx",
-      "args": ["-y", "@raygun.io/mcp-server-raygun"],
-      "env": {
-        "RAYGUN_PAT_TOKEN": "your-pat-token-here"
-      }
-    }
-  }
-}
-```
-
 ## Development
 
 Install dependencies:
@@ -96,6 +78,16 @@ npm run watch
 
 ## Installation
 
+### Using mcp-get (Recommended)
+
+Install the Raygun MCP server using the mcp-get package manager:
+
+```bash
+npx @michaellatman/mcp-get@latest install @raygun.io/mcp-server-raygun
+```
+
+### Manual Configuration
+
 To use with Claude Desktop, add the server config:
 
 On MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
@@ -107,7 +99,7 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
     "raygun": {
       "command": "/path/to/server-raygun/build/index.js",
       "env": {
-        "RAYGUN_PAT_TOKEN": "your-pat-token-ken"
+        "RAYGUN_PAT_TOKEN": "your-pat-token-here"
       }
     }
   }
