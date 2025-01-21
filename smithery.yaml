@@ -1,0 +1,17 @@
+# Smithery configuration file: https://smithery.ai/docs/deployments
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - raygunPatToken
+    properties:
+      raygunPatToken:
+        type: string
+        description: The Raygun PAT token for authenticating API requests.
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio.
+    |-
+    config => ({ command: 'node', args: ['build/index.js'], env: { RAYGUN_PAT_TOKEN: config.raygunPatToken } })
