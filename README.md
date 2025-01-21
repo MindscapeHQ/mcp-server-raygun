@@ -1,5 +1,7 @@
 # Raygun MCP Server
 
+![smithery badge](https://smithery.ai/badge/@raygun.io/mcp-server-raygun)
+
 MCP Server for Raygun's API V3 endpoints for interacting with your Crash Reporting and Real User Monitoring applications. This server provides comprehensive access to Raygun's API features through the Model Context Protocol.
 
 ## Features
@@ -112,6 +114,14 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
     }
   }
 }
+```
+
+### Installing via Smithery
+
+To install Raygun Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@raygun.io/mcp-server-raygun):
+
+```bash
+npx -y @smithery/cli install @raygun.io/mcp-server-raygun --client claude
 ```
 
 ### Debugging
