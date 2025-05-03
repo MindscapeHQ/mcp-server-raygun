@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/mindscapehq-mcp-server-raygun-badge.png)](https://mseep.ai/app/mindscapehq-mcp-server-raygun)
+
 # Raygun MCP Server
 
 MCP Server for Raygun's API V3 endpoints for interacting with your Crash Reporting and Real User Monitoring applications. This server provides comprehensive access to Raygun's API features through the Model Context Protocol.
