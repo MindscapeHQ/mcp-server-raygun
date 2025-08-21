@@ -1,4 +1,5 @@
 # Raygun MCP Server
+[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/MindscapeHQ/mcp-server-raygun)](https://archestra.ai/mcp-catalog/mindscapehq__mcp-server-raygun)
 
 MCP Server for Raygun's API V3 endpoints for interacting with your Crash Reporting and Real User Monitoring applications. This server provides comprehensive access to Raygun's API features through the Model Context Protocol.
 
