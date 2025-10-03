@@ -19,17 +19,12 @@ A remote Model Context Protocol (MCP) server that connects AI assistants to your
 
 ## ✨ Key Features
 
-<details open>
-<summary><strong>🐛 Error Management</strong> • <strong>🚀 Deployment Tracking</strong> • <strong>⚡ Performance Insights</strong></summary>
-
-- **Error Management** - Investigate, resolve, and track application errors and crashes
-- **Deployment Tracking** - Monitor releases and correlate errors with deployments
-- **Performance Insights** - Analyze page load times, user metrics, and performance trends
-- **User Monitoring** - Track customer sessions, behavior patterns, and affected users
-- **Team Collaboration** - Manage invitations and coordinate error resolution
-- **Metrics & Analytics** - Time-series analysis and distribution histograms
-
-</details>
+- 🐛 **Error Management** - Investigate, resolve, and track application errors and crashes with full stack traces and context
+- 🚀 **Deployment Tracking** - Monitor releases and correlate errors with deployments to identify problematic changes
+- ⚡ **Performance Insights** - Analyze page load times, user metrics, and performance trends over time
+- 👥 **User Monitoring** - Track customer sessions, behavior patterns, and identify affected users
+- 🤝 **Team Collaboration** - Manage invitations and coordinate error resolution across your team
+- 📊 **Metrics & Analytics** - Time-series analysis and distribution histograms for errors and performance
 
 ## 📋 Requirements
 
