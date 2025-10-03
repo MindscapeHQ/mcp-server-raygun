@@ -21,7 +21,8 @@ A remote Model Context Protocol (MCP) server that provides AI assistants with di
 
 The Raygun MCP server is hosted remotely at `https://api.raygun.com/v3/mcp`. Configure your AI coding assistant to connect using your Raygun Personal Access Token.
 
-### Amp
+<details>
+<summary>Amp</summary>
 
 On macOS: `~/Library/Application Support/Amp/amp_config.json`
 
@@ -41,7 +42,10 @@ On macOS: `~/Library/Application Support/Amp/amp_config.json`
 }
 ```
 
-### Cursor
+</details>
+
+<details>
+<summary>Cursor</summary>
 
 Add to your Cursor MCP settings:
 
@@ -58,7 +62,10 @@ Add to your Cursor MCP settings:
 }
 ```
 
-### Claude Desktop
+</details>
+
+<details>
+<summary>Claude Desktop</summary>
 
 On macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`  
 On Windows: `%APPDATA%\Claude\claude_desktop_config.json`
@@ -79,7 +86,10 @@ On Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 }
 ```
 
-### Cline
+</details>
+
+<details>
+<summary>Cline</summary>
 
 On macOS: `~/Library/Application Support/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_mcp_settings.json`  
 On Windows: `%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings\cline_mcp_settings.json`
@@ -100,6 +110,8 @@ On Windows: `%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settin
 }
 ```
 
+</details>
+
 ### Your First Prompt
 
 After configuration, try asking your AI assistant:
@@ -114,13 +126,19 @@ or
 
 The Raygun MCP server provides the following categories of tools:
 
-### Applications
+<details>
+<summary>Applications</summary>
+
 - `applications_list` - List all applications in your Raygun account
 - `applications_search` - Search for applications by name
 - `application_get_details` - Get detailed application information
 - `application_regenerate_api_key` - Generate a new API key for an application
 
-### Error Management
+</details>
+
+<details>
+<summary>Error Management</summary>
+
 - `error_groups_list` - List error groups within an application
 - `error_group_investigate` - Get complete details about a specific error group
 - `error_group_update_status` - Change error group status (resolve, ignore, activate)
@@ -128,29 +146,47 @@ The Raygun MCP server provides the following categories of tools:
 - `error_instances_browse` - Browse individual error occurrences
 - `error_instance_get_details` - Get full stack trace and context for an error instance
 
-### Deployments
+</details>
+
+<details>
+<summary>Deployments</summary>
+
 - `deployments_list` - List deployments for an application
 - `deployment_create` - Create a new deployment record
 - `deployment_get_latest` - Get the most recent deployment with error analysis
 - `deployment_investigate` - Get comprehensive deployment information
 - `deployment_manage` - Update or delete a deployment
 
-### Customers & Sessions
+</details>
+
+<details>
+<summary>Customers & Sessions</summary>
+
 - `customers_list` - List customers for an application
 - `customer_investigate` - Get detailed customer information
 - `sessions_list` - List user sessions with environment and device data
 
-### Performance & Metrics
+</details>
+
+<details>
+<summary>Performance & Metrics</summary>
+
 - `pages_list` - List monitored pages in an application
 - `page_investigate` - Get page details for metrics queries
 - `metrics_website_performance_analyze` - Track performance trends over time
 - `metrics_performance_distribution_analyze` - Understand performance variability
 - `metrics_error_trends_analyze` - Track error rates and patterns
 
-### Team Management
+</details>
+
+<details>
+<summary>Team Management</summary>
+
 - `invitations_manage` - List and review team invitations
 - `invitation_send` - Send a new team invitation
 - `invitation_revoke` - Cancel a pending invitation
+
+</details>
 
 For detailed documentation on each tool, see the [Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md).
 
