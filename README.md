@@ -11,7 +11,7 @@
 
 A remote Model Context Protocol (MCP) server that provides AI assistants with direct access to Raygun's application monitoring data through Raygun's API V3.
 
-**[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)** • **[🔑 Get API Token](https://app.raygun.com/)**
+**[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)** • **[🔑 Get API Token](https://app.raygun.com/user/tokens)**
 
 </div>
 
@@ -51,7 +51,7 @@ Time-series analysis and distribution histograms for errors and performance
 ## 📋 Requirements
 
 - 🔐 A [Raygun account](https://raygun.com/) with an active subscription
-- 🔑 A [Raygun Personal Access Token (PAT)](https://raygun.com/documentation/product-guides/raygun-api/)
+- 🔑 A [Raygun Personal Access Token (PAT)](https://app.raygun.com/user/tokens)
 
 ## 🚀 Getting Started
 
@@ -428,12 +428,11 @@ For detailed documentation on each tool, see the [Tool Reference](https://github
 
 To use the Raygun MCP server, you need a Raygun Personal Access Token (PAT):
 
-1. 🔐 Log in to your [Raygun account](https://app.raygun.com/)
-2. ⚙️ Navigate to **User Settings** > **Personal Access Tokens**
-3. ➕ Click **Create New Token**
-4. 📝 Give your token a descriptive name (e.g., "MCP Server Access")
-5. ✅ Select the appropriate permissions for your use case
-6. 📋 Copy the generated token and use it in your MCP configuration
+1. 🔐 Navigate to [**Raygun Personal Access Tokens**](https://app.raygun.com/user/tokens)
+2. ➕ Click **Create New Token**
+3. 📝 Give your token a descriptive name (e.g., "MCP Server Access")
+4. ✅ Select the appropriate permissions for your use case
+5. 📋 Copy the generated token and use it in your MCP configuration
 
 > **⚠️ Important:** Replace `YOUR_PAT_TOKEN` in the configuration examples above with your actual token. Keep your token secure and never commit it to version control!
 
