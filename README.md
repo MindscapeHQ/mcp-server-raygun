@@ -2,14 +2,14 @@
 
 # 🔭 Raygun MCP Server
 
-### Connect your AI assistant to Raygun's Crash Reporting and Real User Monitoring
+### Access your crash reporting data in Raygun with AI assistants
 
 [![MCP](https://img.shields.io/badge/MCP-Remote%20Server-blue?logo=anthropic&logoColor=white)](https://modelcontextprotocol.io/)
 [![API](https://img.shields.io/badge/Raygun%20API-v3-FF6A13?logo=raygun&logoColor=white)](https://raygun.com/documentation/product-guides/raygun-api/)
 [![Status](https://img.shields.io/badge/Status-Production-success?logo=checkmarx&logoColor=white)](https://api.raygun.com/v3/mcp)
 [![Docs](https://img.shields.io/badge/Docs-Available-informational?logo=gitbook&logoColor=white)](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)
 
-A remote Model Context Protocol (MCP) server that provides AI assistants with direct access to Raygun's application monitoring data through Raygun's API V3.
+A remote Model Context Protocol (MCP) server that connects AI assistants to your crash reporting and real user monitoring data in Raygun through natural language conversations.
 
 **[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)** • **[🔑 Get API Token](https://app.raygun.com/user/tokens)**
 
@@ -442,7 +442,7 @@ For more details, see the [Raygun API documentation](https://raygun.com/document
 
 ## 📖 About
 
-The Raygun MCP server enables AI coding assistants to interact with your Raygun Crash Reporting and Real User Monitoring applications, helping you investigate errors, track deployments, analyze performance, and manage your application monitoring workflow—all through natural language conversations.
+The Raygun MCP server enables AI coding assistants to access and analyze your crash reporting and real user monitoring data in Raygun, helping you investigate errors, track deployments, analyze performance, and manage your application monitoring workflow—all through natural language conversations.
 
 ## 🔗 Resources
 
