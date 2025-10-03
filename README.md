@@ -4,8 +4,10 @@
 
 ### Connect your AI assistant to Raygun's Crash Reporting and Real User Monitoring
 
-[![MCP](https://img.shields.io/badge/MCP-Remote%20Server-blue)](https://modelcontextprotocol.io/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![MCP](https://img.shields.io/badge/MCP-Remote%20Server-blue?logo=anthropic&logoColor=white)](https://modelcontextprotocol.io/)
+[![API](https://img.shields.io/badge/Raygun%20API-v3-FF6A13?logo=raygun&logoColor=white)](https://raygun.com/documentation/product-guides/raygun-api/)
+[![Status](https://img.shields.io/badge/Status-Production-success?logo=checkmarx&logoColor=white)](https://api.raygun.com/v3/mcp)
+[![Docs](https://img.shields.io/badge/Docs-Available-informational?logo=gitbook&logoColor=white)](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)
 
 A remote Model Context Protocol (MCP) server that provides AI assistants with direct access to Raygun's application monitoring data through Raygun's API V3.
 
