@@ -24,6 +24,8 @@ The Raygun MCP server is hosted remotely at `https://api.raygun.com/v3/mcp`. Con
 <details>
 <summary>Amp</summary>
 
+**Guide:** [Amp MCP Documentation](https://ampcode.com/manual)
+
 On macOS: `~/Library/Application Support/Amp/amp_config.json`
 
 ```json
@@ -45,30 +47,23 @@ On macOS: `~/Library/Application Support/Amp/amp_config.json`
 </details>
 
 <details>
-<summary>Cursor</summary>
+<summary>Claude Code</summary>
 
-Add to your Cursor MCP settings:
+**Guide:** [Claude Code MCP Documentation](https://docs.anthropic.com/en/docs/claude-code/mcp)
 
-```json
-{
-  "mcpServers": {
-    "Raygun": {
-      "url": "https://api.raygun.com/v3/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_PAT_TOKEN"
-      }
-    }
-  }
-}
+```bash
+claude mcp add raygun npx mcp-remote https://api.raygun.com/v3/mcp --header "Authorization: Bearer YOUR_PAT_TOKEN"
 ```
 
 </details>
 
 <details>
-<summary>Claude Desktop</summary>
+<summary>Cline</summary>
 
-On macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`  
-On Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+**Guide:** [Cline MCP Configuration](https://docs.cline.bot/mcp/configuring-mcp-servers)
+
+On macOS: `~/Library/Application Support/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_mcp_settings.json`  
+On Windows: `%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings\cline_mcp_settings.json`
 
 ```json
 {
@@ -89,10 +84,203 @@ On Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 </details>
 
 <details>
-<summary>Cline</summary>
+<summary>Codex</summary>
 
-On macOS: `~/Library/Application Support/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_mcp_settings.json`  
-On Windows: `%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings\cline_mcp_settings.json`
+**Guide:** [Codex MCP Advanced Configuration](https://github.com/openai/codex/blob/main/docs/advanced.md#model-context-protocol-mcp)
+
+**Command:**
+```bash
+codex mcp add raygun -- npx mcp-remote https://api.raygun.com/v3/mcp --header "Authorization: Bearer YOUR_PAT_TOKEN"
+```
+
+**Configuration for `.codex/config.toml` (Windows):**
+```toml
+[mcp_servers.raygun]
+command = "cmd"
+args = [
+    "/c",
+    "npx",
+    "mcp-remote",
+    "https://api.raygun.com/v3/mcp",
+    "--header",
+    "Authorization: Bearer YOUR_PAT_TOKEN"
+]
+env = { SystemRoot="C:\\Windows", PROGRAMFILES="C:\\Program Files" }
+startup_timeout_ms = 20_000
+```
+
+</details>
+
+<details>
+<summary>Copilot CLI</summary>
+
+1. Start Copilot CLI:
+   ```bash
+   copilot
+   ```
+2. Add a new MCP server:
+   ```bash
+   /mcp add
+   ```
+3. Configure the following fields and press `CTRL-S` to save:
+   * **Server name:** `raygun`
+   * **Server Type:** `[1] Local`
+   * **Command:** `npx`
+   * **Arguments:** `mcp-remote, https://api.raygun.com/v3/mcp, --header, Authorization: Bearer YOUR_PAT_TOKEN`
+
+</details>
+
+<details>
+<summary>Copilot / VS Code</summary>
+
+**Guide:** [VS Code MCP Servers](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
+
+**Command:**
+```bash
+code --add-mcp '{"name":"Raygun","command":"npx","args":["mcp-remote","https://api.raygun.com/v3/mcp","--header","Authorization: Bearer YOUR_PAT_TOKEN"]}'
+```
+
+**Or manually configure:**
+```json
+{
+  "name": "Raygun",
+  "command": "npx",
+  "args": [
+    "mcp-remote",
+    "https://api.raygun.com/v3/mcp",
+    "--header",
+    "Authorization: Bearer YOUR_PAT_TOKEN"
+  ]
+}
+```
+
+</details>
+
+<details>
+<summary>Cursor</summary>
+
+Go to `Cursor Settings` → `MCP` → `New MCP Server`
+
+```json
+{
+  "mcpServers": {
+    "Raygun": {
+      "url": "https://api.raygun.com/v3/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_PAT_TOKEN"
+      }
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Gemini CLI</summary>
+
+**Guide:** [Gemini CLI MCP Setup](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md#how-to-set-up-your-mcp-server)
+
+**Project-wide:**
+```bash
+gemini mcp add raygun npx mcp-remote https://api.raygun.com/v3/mcp --header "Authorization: Bearer YOUR_PAT_TOKEN"
+```
+
+**Globally:**
+```bash
+gemini mcp add -s user raygun npx mcp-remote https://api.raygun.com/v3/mcp --header "Authorization: Bearer YOUR_PAT_TOKEN"
+```
+
+**Or manually configure:**
+```json
+{
+  "mcpServers": {
+    "Raygun": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://api.raygun.com/v3/mcp",
+        "--header",
+        "Authorization: Bearer YOUR_PAT_TOKEN"
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Gemini Code Assist</summary>
+
+**Guide:** [Gemini Code Assist MCP Configuration](https://cloud.google.com/gemini/docs/codeassist/use-agentic-chat-pair-programmer#configure-mcp-servers)
+
+```json
+{
+  "mcpServers": {
+    "Raygun": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://api.raygun.com/v3/mcp",
+        "--header",
+        "Authorization: Bearer YOUR_PAT_TOKEN"
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>JetBrains AI Assistant & Junie</summary>
+
+Go to `Settings | Tools | AI Assistant | Model Context Protocol (MCP)` → `Add`  
+Or for Junie: `Settings | Tools | Junie | MCP Settings` → `Add`
+
+```json
+{
+  "mcpServers": {
+    "Raygun": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://api.raygun.com/v3/mcp",
+        "--header",
+        "Authorization: Bearer YOUR_PAT_TOKEN"
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Visual Studio</summary>
+
+Go to your Visual Studio MCP config file (see the [Visual Studio docs](https://docs.microsoft.com/visualstudio/ide/ai-assisted-development))
+
+```json
+{
+  "name": "Raygun",
+  "command": "npx",
+  "args": [
+    "mcp-remote",
+    "https://api.raygun.com/v3/mcp",
+    "--header",
+    "Authorization: Bearer YOUR_PAT_TOKEN"
+  ]
+}
+```
+
+</details>
+
+<details>
+<summary>Warp</summary>
+
+Go to `Settings | AI | Manage MCP Servers` → `+ Add`
 
 ```json
 {
