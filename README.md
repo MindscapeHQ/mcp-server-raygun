@@ -1,25 +1,61 @@
-# Raygun MCP Server
+<div align="center">
 
-A remote Model Context Protocol (MCP) server that provides AI assistants with direct access to Raygun's Crash Reporting and Real User Monitoring data through Raygun's API V3.
+# 🔭 Raygun MCP Server
 
-**[Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)**
+### Connect your AI assistant to Raygun's Crash Reporting and Real User Monitoring
 
-## Key Features
+[![MCP](https://img.shields.io/badge/MCP-Remote%20Server-blue)](https://modelcontextprotocol.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-- **Error Management** - Investigate, resolve, and track application errors and crashes
-- **Deployment Tracking** - Monitor releases and correlate errors with deployments  
-- **Performance Insights** - Analyze page load times, user metrics, and performance trends
-- **User Monitoring** - Track customer sessions, behavior patterns, and affected users
-- **Team Collaboration** - Manage invitations and coordinate error resolution
+A remote Model Context Protocol (MCP) server that provides AI assistants with direct access to Raygun's application monitoring data through Raygun's API V3.
 
-## Requirements
+**[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)** • **[🔑 Get API Token](https://app.raygun.com/)**
 
-- A [Raygun account](https://raygun.com/) with an active subscription
-- A [Raygun Personal Access Token (PAT)](https://raygun.com/documentation/product-guides/raygun-api/)
+</div>
 
-## Getting Started
+---
 
-The Raygun MCP server is hosted remotely at `https://api.raygun.com/v3/mcp`. Configure your AI coding assistant to connect using your Raygun Personal Access Token.
+## ✨ Key Features
+
+<table>
+<tr>
+<td width="50%">
+
+### 🐛 Error Management
+Investigate, resolve, and track application errors and crashes with full stack traces and context
+
+### 🚀 Deployment Tracking
+Monitor releases and correlate errors with deployments to identify problematic changes
+
+### ⚡ Performance Insights
+Analyze page load times, user metrics, and performance trends over time
+
+</td>
+<td width="50%">
+
+### 👥 User Monitoring
+Track customer sessions, behavior patterns, and identify affected users
+
+### 🤝 Team Collaboration
+Manage invitations and coordinate error resolution across your team
+
+### 📊 Metrics & Analytics
+Time-series analysis and distribution histograms for errors and performance
+
+</td>
+</tr>
+</table>
+
+## 📋 Requirements
+
+- 🔐 A [Raygun account](https://raygun.com/) with an active subscription
+- 🔑 A [Raygun Personal Access Token (PAT)](https://raygun.com/documentation/product-guides/raygun-api/)
+
+## 🚀 Getting Started
+
+The Raygun MCP server is hosted remotely at `https://api.raygun.com/v3/mcp`. 
+
+> **💡 Tip:** Choose your AI assistant below and follow the configuration instructions. Don't forget to replace `YOUR_PAT_TOKEN` with your actual Raygun Personal Access Token!
 
 <details>
 <summary>Amp</summary>
@@ -300,22 +336,28 @@ Go to `Settings | AI | Manage MCP Servers` → `+ Add`
 
 </details>
 
-### Your First Prompt
+### 💬 Your First Prompt
 
 After configuration, try asking your AI assistant:
 
-> "Show me the most recent error groups in my Raygun applications"
+```
+🔍 "Show me the most recent error groups in my Raygun applications"
+```
 
-or
+```
+🚀 "What were the latest deployments and did they introduce any new errors?"
+```
 
-> "What were the latest deployments and did they introduce any new errors?"
+```
+📊 "Analyze the performance trends for my top pages over the last 7 days"
+```
 
-## Tools
+## 🛠️ Tools
 
 The Raygun MCP server provides the following categories of tools:
 
 <details>
-<summary>Applications</summary>
+<summary>📱 Applications</summary>
 
 - `applications_list` - List all applications in your Raygun account
 - `applications_search` - Search for applications by name
@@ -325,7 +367,7 @@ The Raygun MCP server provides the following categories of tools:
 </details>
 
 <details>
-<summary>Error Management</summary>
+<summary>🐛 Error Management</summary>
 
 - `error_groups_list` - List error groups within an application
 - `error_group_investigate` - Get complete details about a specific error group
@@ -337,7 +379,7 @@ The Raygun MCP server provides the following categories of tools:
 </details>
 
 <details>
-<summary>Deployments</summary>
+<summary>🚀 Deployments</summary>
 
 - `deployments_list` - List deployments for an application
 - `deployment_create` - Create a new deployment record
@@ -348,7 +390,7 @@ The Raygun MCP server provides the following categories of tools:
 </details>
 
 <details>
-<summary>Customers & Sessions</summary>
+<summary>👥 Customers & Sessions</summary>
 
 - `customers_list` - List customers for an application
 - `customer_investigate` - Get detailed customer information
@@ -357,7 +399,7 @@ The Raygun MCP server provides the following categories of tools:
 </details>
 
 <details>
-<summary>Performance & Metrics</summary>
+<summary>📊 Performance & Metrics</summary>
 
 - `pages_list` - List monitored pages in an application
 - `page_investigate` - Get page details for metrics queries
@@ -368,7 +410,7 @@ The Raygun MCP server provides the following categories of tools:
 </details>
 
 <details>
-<summary>Team Management</summary>
+<summary>🤝 Team Management</summary>
 
 - `invitations_manage` - List and review team invitations
 - `invitation_send` - Send a new team invitation
@@ -378,30 +420,42 @@ The Raygun MCP server provides the following categories of tools:
 
 For detailed documentation on each tool, see the [Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md).
 
-## Configuration
+## 🔑 Configuration
 
 ### Obtaining a Personal Access Token
 
 To use the Raygun MCP server, you need a Raygun Personal Access Token (PAT):
 
-1. Log in to your [Raygun account](https://app.raygun.com/)
-2. Navigate to **User Settings** > **Personal Access Tokens**
-3. Click **Create New Token**
-4. Give your token a descriptive name (e.g., "MCP Server Access")
-5. Select the appropriate permissions for your use case
-6. Copy the generated token and use it in your MCP configuration
+1. 🔐 Log in to your [Raygun account](https://app.raygun.com/)
+2. ⚙️ Navigate to **User Settings** > **Personal Access Tokens**
+3. ➕ Click **Create New Token**
+4. 📝 Give your token a descriptive name (e.g., "MCP Server Access")
+5. ✅ Select the appropriate permissions for your use case
+6. 📋 Copy the generated token and use it in your MCP configuration
 
-Replace `YOUR_PAT_TOKEN` in the configuration examples above with your actual token.
+> **⚠️ Important:** Replace `YOUR_PAT_TOKEN` in the configuration examples above with your actual token. Keep your token secure and never commit it to version control!
 
 For more details, see the [Raygun API documentation](https://raygun.com/documentation/product-guides/raygun-api/).
 
-## About
+---
 
-The Raygun MCP server enables AI coding assistants to interact with your Raygun Crash Reporting and Real User Monitoring applications, helping you investigate errors, track deployments, analyze performance, and manage your application monitoring workflow.
+## 📖 About
 
-## Resources
+The Raygun MCP server enables AI coding assistants to interact with your Raygun Crash Reporting and Real User Monitoring applications, helping you investigate errors, track deployments, analyze performance, and manage your application monitoring workflow—all through natural language conversations.
 
-- [Raygun Documentation](https://raygun.com/documentation/)
-- [Raygun API Reference](https://raygun.com/documentation/product-guides/raygun-api/)
-- [Model Context Protocol](https://modelcontextprotocol.io/)
-- [Report Issues](https://github.com/MindscapeHQ/mcp-server-raygun/issues)
+## 🔗 Resources
+
+- 📚 [Raygun Documentation](https://raygun.com/documentation/)
+- 🔌 [Raygun API Reference](https://raygun.com/documentation/product-guides/raygun-api/)
+- 🤖 [Model Context Protocol](https://modelcontextprotocol.io/)
+- 🐛 [Report Issues](https://github.com/MindscapeHQ/mcp-server-raygun/issues)
+
+---
+
+<div align="center">
+
+**Built with ❤️ by [Raygun](https://raygun.com)**
+
+[![Raygun](https://img.shields.io/badge/Powered%20by-Raygun-FF6A13?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=)](https://raygun.com)
+
+</div>
