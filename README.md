@@ -265,11 +265,11 @@ For detailed documentation on each tool, see the [Tool Reference](https://github
 
 To use the Raygun MCP server, you need a Raygun Personal Access Token (PAT):
 
-1. 🔐 Navigate to [**Raygun Personal Access Tokens**](https://app.raygun.com/user/tokens)
-2. ➕ Click **Create New Token**
-3. 📝 Give your token a descriptive name (e.g., "MCP Server Access")
-4. ✅ Select the appropriate permissions for your use case
-5. 📋 Copy the generated token and use it in your MCP configuration
+1. Navigate to [**Raygun Personal Access Tokens**](https://app.raygun.com/user/tokens)
+2. Click **Create New Token**
+3. Give your token a descriptive name (e.g., "MCP Server Access")
+4. Select the appropriate permissions for your use case
+5. Copy the generated token and use it in your MCP configuration
 
 > **⚠️ Important:** Replace `YOUR_PAT_TOKEN` in the configuration examples above with your actual token. Keep your token secure and never commit it to version control!
 
