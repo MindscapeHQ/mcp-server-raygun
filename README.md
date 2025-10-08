@@ -1,125 +1,299 @@
-# Raygun MCP Server
+<div align="center">
 
-MCP Server for Raygun's API V3 endpoints for interacting with your Crash Reporting and Real User Monitoring applications. This server provides comprehensive access to Raygun's API features through the Model Context Protocol.
+# 🔭 Raygun MCP Server
 
-## Features
+### Access your crash reporting data in Raygun with AI assistants
 
-### Tools
+[![MCP](https://img.shields.io/badge/MCP-Remote%20Server-blue?logo=anthropic&logoColor=white)](https://modelcontextprotocol.io/)
+[![API](https://img.shields.io/badge/Raygun%20API-v3-FF6A13?logo=raygun&logoColor=white)](https://raygun.com/documentation/product-guides/raygun-api/)
+[![Status](https://img.shields.io/badge/Status-Production-success?logo=checkmarx&logoColor=white)](https://api.raygun.com/v3/mcp)
+[![Docs](https://img.shields.io/badge/Docs-Available-informational?logo=gitbook&logoColor=white)](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)
 
-#### Applications
-- `list_applications` - List all applications under your account
-- `get_application` - Get application details by identifier
-- `get_application_by_api_key` - Get application details by API key
-- `regenerate_application_api_key` - Generate a new API key for an application
+A remote Model Context Protocol (MCP) server that connects AI assistants to your crash reporting and real user monitoring data in Raygun through natural language conversations.
 
-#### Error Management
-- `list_error_groups` - List error groups for an application
-- `get_error_group` - Get detailed information about an error group
-- `resolve_error_group` - Set error group status to resolved
-- `activate_error_group` - Set error group status to active
-- `ignore_error_group` - Set error group status to ignored
-- `permanently_ignore_error_group` - Set error group status to permanently ignored
+**[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)** • **[🔑 Get API Token](https://app.raygun.com/user/tokens)**
 
-#### Deployment Management
-- `list_deployments` - List deployments for an application
-- `get_deployment` - Get deployment details by identifier
-- `delete_deployment` - Remove a deployment
-- `update_deployment` - Update deployment information
-- `reprocess_deployment_commits` - Reprocess deployment commit data
+</div>
 
-#### User & Session Management
-- `list_customers` - List customers for an application
-- `list_sessions` - List user sessions for an application
-- `get_session` - Get detailed session information
+---
 
-#### Performance Monitoring
-- `list_pages` - List monitored pages for an application
-- `get_page_metrics_time_series` - Get time-series performance metrics
-- `get_page_metrics_histogram` - Get histogram of performance metrics
-- `get_error_metrics_time_series` - Get time-series error metrics
+## ✨ Key Features
 
-#### Source Maps
-- `list_source_maps` - List source maps for an application
-- `get_source_map` - Get source map details
-- `update_source_map` - Update source map information
-- `delete_source_map` - Remove a source map
-- `upload_source_map` - Upload a new source map
-- `delete_all_source_maps` - Remove all source maps
+- 🐛 **Error Management** - Investigate, resolve, and track application errors and crashes with full stack traces and context
+- 🚀 **Deployment Tracking** - Monitor releases and correlate errors with deployments to identify problematic changes
+- ⚡ **Performance Insights** - Analyze page load times, user metrics, and performance trends over time
+- 👥 **User Monitoring** - Track customer sessions, behavior patterns, and identify affected users
+- 🤝 **Team Collaboration** - Manage invitations and coordinate error resolution across your team
+- 📊 **Metrics & Analytics** - Time-series analysis and distribution histograms for errors and performance
 
-#### Team Management
-- `list_invitations` - List pending team invitations
-- `send_invitation` - Send a new team invitation
-- `get_invitation` - Get invitation details
-- `revoke_invitation` - Revoke a pending invitation
+## 📋 Requirements
 
-## Configuration
+- 🔐 A [Raygun account](https://raygun.com/) with an active subscription
+- 🔑 A [Raygun Personal Access Token (PAT)](https://app.raygun.com/user/tokens)
 
-The server requires the following environment variables:
+## 🚀 Getting Started
 
-- `RAYGUN_PAT_TOKEN` (required): Your [Raygun PAT token](https://raygun.com/documentation/product-guides/raygun-api/)
-- `SOURCEMAP_ALLOWED_DIRS` (optional): Comma-separated list of directories allowed for source map operations
+The Raygun MCP server is hosted remotely at `https://api.raygun.com/v3/mcp`. 
 
-## Usage with Claude Desktop
+> **💡 Tip:** Choose your AI assistant below and follow the configuration instructions. Don't forget to replace `YOUR_PAT_TOKEN` with your actual Raygun Personal Access Token!
 
-Add to your `claude_desktop_config.json`:
+<details>
+<summary>Amp</summary>
+
+**Guide:** [Amp MCP Documentation](https://ampcode.com/manual#mcp)
+
+```bash
+amp mcp add raygun --header "Authorization=Bearer YOUR_PAT_TOKEN" https://api.raygun.com/v3/mcp
+```
+
+</details>
+
+<details>
+<summary>Claude Code</summary>
+
+**Guide:** [Claude Code MCP Documentation](https://docs.claude.com/en/docs/claude-code/mcp)
+
+```bash
+claude mcp add --transport http raygun https://api.raygun.com/v3/mcp --header "Authorization: Bearer YOUR_PAT_TOKEN"
+```
+
+</details>
+
+<details>
+<summary>Cline</summary>
+
+**Guide:** [Cline MCP Documentation](https://docs.cline.bot/mcp/connecting-to-a-remote-server)
+
+Use `https://api.raygun.com/v3/mcp` and your PAT token
+
+</details>
+
+<details>
+<summary>Codex</summary>
+
+**Guide:** [Codex MCP Documentation](https://developers.openai.com/codex/mcp/)
+
+```toml
+[mcp_servers.raygun]
+command = "npx"
+args = ["mcp-remote", "https://api.raygun.com/v3/mcp", "--header", "Authorization: Bearer YOUR_PAT_TOKEN"]
+```
+
+</details>
+
+<details>
+<summary>Cursor</summary>
+
+Go to `Cursor Settings` → `MCP` → `New MCP Server`
 
 ```json
 {
   "mcpServers": {
+    "Raygun": {
+      "url": "https://api.raygun.com/v3/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_PAT_TOKEN"
+      }
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Gemini CLI</summary>
+
+```bash
+gemini mcp add --transport http raygun https://api.raygun.com/v3/mcp --header "Authorization: Bearer YOUR_PAT_TOKEN"
+```
+
+</details>
+
+<details>
+<summary>JetBrains AI Assistant</summary>
+
+**Guide:** [JetBrains AI Assistant MCP Documentation](https://www.jetbrains.com/help/ai-assistant/mcp.html#connect-to-an-mcp-server)
+
+```json
+{
+  "mcpServers": {
+    "Raygun": {
+      "url": "https://api.raygun.com/v3/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_PAT_TOKEN"
+      }
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>VS Code</summary>
+
+**Guide:** [VS Code MCP Servers](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
+
+```json
+{
+  "servers": {
     "raygun": {
+      "url": "https://api.raygun.com/v3/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_PAT_TOKEN"
+      }
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Zed</summary>
+
+**Guide:** [Zed MCP Documentation](https://zed.dev/docs/ai/mcp)
+
+```json
+{
+  "context_servers": {
+    "raygun": {
+      "source": "custom",
       "command": "npx",
-      "args": ["-y", "@raygun.io/mcp-server-raygun"],
-      "env": {
-        "RAYGUN_PAT_TOKEN": "your-pat-token-here"
-      }
+      "args": [
+        "mcp-remote",
+        "https://api.raygun.com/v3/mcp",
+        "--header",
+        "Authorization: Bearer YOUR_PAT_TOKEN"
+      ],
+      "env": {}
     }
   }
 }
 ```
 
-## Development
+</details>
 
-Install dependencies:
-```bash
-npm install
+### 💬 Your First Prompt
+
+After configuration, try asking your AI assistant:
+
+```
+🔍 "Show me the most recent error groups in my Raygun applications"
 ```
 
-Build the server:
-```bash
-npm run build
+```
+🚀 "What were the latest deployments and did they introduce any new errors?"
 ```
 
-For development with auto-rebuild:
-```bash
-npm run watch
+```
+📊 "Analyze the performance trends for my top pages over the last 7 days"
 ```
 
-## Installation
+## 🛠️ Tools
 
-To use with Claude Desktop, add the server config:
+The Raygun MCP server provides the following categories of tools:
 
-On MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
+<details>
+<summary>📱 Applications</summary>
 
-```json
-{
-  "mcpServers": {
-    "raygun": {
-      "command": "/path/to/server-raygun/build/index.js",
-      "env": {
-        "RAYGUN_PAT_TOKEN": "your-pat-token-ken"
-      }
-    }
-  }
-}
-```
+- `applications_list` - List all applications in your Raygun account
+- `applications_search` - Search for applications by name
+- `application_get_details` - Get detailed application information
+- `application_regenerate_api_key` - Generate a new API key for an application
 
-### Debugging
+</details>
 
-Since MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which is available as a package script:
+<details>
+<summary>🐛 Error Management</summary>
 
-```bash
-npm run inspector
-```
+- `error_groups_list` - List error groups within an application
+- `error_group_investigate` - Get complete details about a specific error group
+- `error_group_update_status` - Change error group status (resolve, ignore, activate)
+- `error_group_add_comment` - Add investigation notes to an error group
+- `error_instances_browse` - Browse individual error occurrences
+- `error_instance_get_details` - Get full stack trace and context for an error instance
 
-The Inspector will provide a URL to access debugging tools in your browser.
+</details>
+
+<details>
+<summary>🚀 Deployments</summary>
+
+- `deployments_list` - List deployments for an application
+- `deployment_create` - Create a new deployment record
+- `deployment_get_latest` - Get the most recent deployment with error analysis
+- `deployment_investigate` - Get comprehensive deployment information
+- `deployment_manage` - Update or delete a deployment
+
+</details>
+
+<details>
+<summary>👥 Customers & Sessions</summary>
+
+- `customers_list` - List customers for an application
+- `customer_investigate` - Get detailed customer information
+- `sessions_list` - List user sessions with environment and device data
+
+</details>
+
+<details>
+<summary>📊 Performance & Metrics</summary>
+
+- `pages_list` - List monitored pages in an application
+- `page_investigate` - Get page details for metrics queries
+- `metrics_website_performance_analyze` - Track performance trends over time
+- `metrics_performance_distribution_analyze` - Understand performance variability
+- `metrics_error_trends_analyze` - Track error rates and patterns
+
+</details>
+
+<details>
+<summary>🤝 Team Management</summary>
+
+- `invitations_manage` - List and review team invitations
+- `invitation_send` - Send a new team invitation
+- `invitation_revoke` - Cancel a pending invitation
+
+</details>
+
+For detailed documentation on each tool, see the [Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md).
+
+## 🔑 Configuration
+
+### Obtaining a Personal Access Token
+
+To use the Raygun MCP server, you need a Raygun Personal Access Token (PAT):
+
+1. Navigate to [**Raygun Personal Access Tokens**](https://app.raygun.com/user/tokens)
+2. Click **Create New Token**
+3. Give your token a descriptive name (e.g., "MCP Server Access")
+4. Select the appropriate permissions for your use case
+5. Copy the generated token and use it in your MCP configuration
+
+> **⚠️ Important:** Replace `YOUR_PAT_TOKEN` in the configuration examples above with your actual token. Keep your token secure and never commit it to version control!
+
+For more details, see the [Raygun API documentation](https://raygun.com/documentation/product-guides/raygun-api/).
+
+---
+
+## 📖 About
+
+The Raygun MCP server enables AI coding assistants to access and analyze your crash reporting and real user monitoring data in Raygun, helping you investigate errors, track deployments, analyze performance, and manage your application monitoring workflow—all through natural language conversations.
+
+## 🔗 Resources
+
+- 📚 [Raygun Documentation](https://raygun.com/documentation/)
+- 🔌 [Raygun API Reference](https://raygun.com/documentation/product-guides/raygun-api/)
+- 🤖 [Model Context Protocol](https://modelcontextprotocol.io/)
+- 🐛 [Report Issues](https://github.com/MindscapeHQ/mcp-server-raygun/issues)
+
+---
+
+<div align="center">
+
+**Built with ❤️ by [Raygun](https://raygun.com)**
+
+[![Raygun](https://img.shields.io/badge/Powered%20by-Raygun-FF6A13?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=)](https://raygun.com)
+
+</div>
