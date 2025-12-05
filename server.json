@@ -1,0 +1,31 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "name": "io.github.MindscapeHQ/mcp-server-raygun",
+  "title": "Raygun",
+  "description": "Investigate errors, track deployments, analyze performance, and manage application monitoring",
+  "icons": [
+    {
+      "src": "https://cdn.prod.website-files.com/5e2701b416b6d176f5007781/6321348741e051a778e42e8f_256x256.png"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/MindscapeHQ/mcp-server-raygun",
+    "source": "github"
+  },
+  "version": "1.0.2",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.raygun.com/v3/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Raygun Personal Access Token (PAT) in Bearer format. Get yours at https://app.raygun.com/user/tokens",
+          "isRequired": true,
+          "isSecret": true,
+          "placeholder": "Bearer YOUR_PAT_TOKEN"
+        }
+      ]
+    }
+  ]
+}
