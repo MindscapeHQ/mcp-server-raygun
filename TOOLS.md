@@ -277,34 +277,40 @@ Update deployment def456 to add comment "Hotfix for authentication issue"
 
 ## Customers & Sessions
 
-### `customers_list`
+### `customers_search`
 
-List customers for a Raygun application to analyze user base and identify affected users.
+Search for customers in a Raygun application by name, email address, or unique identifier. Returns matching customers with their internal Identifier (base36), which is needed to pass to `customer_investigate`. Use this tool to look up a customer's internal Identifier when you only have their external identifier (e.g. an email address or SDK-provided user ID like "12800").
 
 **Parameters:**
-- `appId` (string, required): The unique identifier of the Raygun application
+- `appId` (string, required): The unique identifier of the Raygun application (base36)
+- `searchTerm` (string, required): Search term to match against customer first name, full name, email address, or unique identifier
 - `count` (integer, optional): Maximum number of customers to return (default: 100, max: 500)
-- `offset` (integer, optional): Number of customers to skip for pagination (0-based)
-- `sortOrder` (string, optional): Sort order. Available fields: `identifier`, `firstName`, `lastName`, `emailAddress`, `createdAt`, `lastActiveAt`. Examples: `lastActiveAt desc` (most recent first)
 
 **Example:**
 ```
-List the most recently active customers for application abc123
+Search for customer "user@example.com" in application abc123
 ```
 
 ---
 
 ### `customer_investigate`
 
-Get detailed information about a specific customer including their experience and issues.
+Get a customer's profile, recent error groups (with instance counts and messages), and recent sessions. The `customerId` parameter expects the internal Identifier (base36) returned by `customers_search` — not the customer's external identifier (e.g. email or SDK-provided user ID). Use `customers_search` first to find the internal Identifier for a customer.
+
+**Returns:**
+- **Customer profile**: name, email, external identifier, location, first/last seen
+- **Recent error groups**: up to 20 most recent error groups, each with message, instance count, and first/last occurred timestamps
+- **Recent sessions**: up to 10 most recent sessions, each with browser, version, start/end times, active status
 
 **Parameters:**
-- `appId` (string, required): The unique identifier of the Raygun application
-- `customerId` (string, required): The unique identifier of the customer
+- `appId` (string, required): The unique identifier of the Raygun application (base36)
+- `customerId` (string, required): The customer's internal Identifier (base36) returned by `customers_search`
+- `startTime` (string, optional): Start of the time range for errors and sessions (ISO 8601, e.g. '2024-01-15T00:00:00Z'). Defaults to 30 days ago.
+- `endTime` (string, optional): End of the time range for errors and sessions (ISO 8601, e.g. '2024-02-15T00:00:00Z'). Defaults to now.
 
 **Example:**
 ```
-Investigate customer user@example.com in application abc123
+Search for customer "user@example.com" in application abc123, then investigate their recent errors and sessions using the returned Identifier
 ```
 
 ---
