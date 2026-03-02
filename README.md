@@ -231,8 +231,8 @@ The Raygun MCP server provides the following categories of tools:
 <details>
 <summary>👥 Customers & Sessions</summary>
 
-- `customers_list` - List customers for an application
-- `customer_investigate` - Get detailed customer information
+- `customers_search` - Search customers by name, email, or identifier
+- `customer_investigate` - Get customer profile, recent error groups, and sessions
 - `sessions_list` - List user sessions with environment and device data
 
 </details>
