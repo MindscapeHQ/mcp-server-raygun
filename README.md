@@ -52,14 +52,18 @@ Add the URL as a Streamable HTTP server without an `Authorization` header. On fi
 You do not need to supply an OAuth client ID or client secret. Raygun supports automatic client registration.
 
 <details>
-<summary>Codex</summary>
+<summary>Codex and the ChatGPT desktop app</summary>
 
 ```bash
 codex mcp add raygun --url https://api.raygun.com/v3/mcp
 codex mcp login raygun
 ```
 
+This configuration is shared by the Codex CLI, Codex IDE extension, and ChatGPT desktop app on the same Codex host.
+
 In the ChatGPT desktop app, open **Settings > MCP servers**, select **Add server**, choose **Streamable HTTP**, and enter the Raygun endpoint. Save and restart the app, then select **Authenticate** for Raygun.
+
+ChatGPT on the web uses remote MCP tools through Plugins and does not read your local Codex MCP configuration. A separately published Raygun Plugin would be installed from the Plugins catalog.
 
 </details>
 
