@@ -7,11 +7,11 @@
 [![MCP](https://img.shields.io/badge/MCP-Remote%20Server-blue?logo=anthropic&logoColor=white)](https://modelcontextprotocol.io/)
 [![API](https://img.shields.io/badge/Raygun%20API-v3-FF6A13?logo=raygun&logoColor=white)](https://raygun.com/documentation/product-guides/raygun-api/)
 [![Status](https://img.shields.io/badge/Status-Production-success?logo=checkmarx&logoColor=white)](https://api.raygun.com/v3/mcp)
-[![Docs](https://img.shields.io/badge/Docs-Available-informational?logo=gitbook&logoColor=white)](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)
+[![Docs](https://img.shields.io/badge/Docs-Available-informational?logo=gitbook&logoColor=white)](https://raygun.com/documentation/product-guides/raygun-mcp-server/)
 
 A remote Model Context Protocol (MCP) server that connects AI assistants to Raygun Crash Reporting, Real User Monitoring, and Application Performance Monitoring.
 
-**[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)** • **[🔐 Authentication](#authentication)**
+**[📘 Setup Guide](https://raygun.com/documentation/product-guides/raygun-mcp-server/)** • **[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)**
 
 </div>
 
@@ -39,6 +39,11 @@ The Raygun MCP server is hosted at:
 ```text
 https://api.raygun.com/v3/mcp
 ```
+
+Raygun hosts and updates the service, so there is no package or local server to install.
+
+[![Install in Cursor](https://img.shields.io/badge/Cursor-Install_Raygun_MCP-111111?logo=cursor&logoColor=white)](cursor://anysphere.cursor-deeplink/mcp/install?name=raygun&config=eyJ1cmwiOiJodHRwczovL2FwaS5yYXlndW4uY29tL3YzL21jcCJ9)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Raygun_MCP-0098FF?logo=visualstudiocode&logoColor=white)](vscode:mcp/install?%7B%22name%22%3A%22raygun%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapi.raygun.com%2Fv3%2Fmcp%22%7D)
 
 ### OAuth (recommended)
 
@@ -125,17 +130,11 @@ PAT authentication remains supported for clients without MCP OAuth support and f
 
 After configuration, try asking your AI assistant:
 
-```
-🔍 "Show me the most recent error groups in my Raygun applications"
-```
-
-```
-🚀 "What were the latest deployments and did they introduce any new errors?"
-```
-
-```
-📊 "Analyze the performance trends for my top pages over the last 7 days"
-```
+- “Find the errors that first appeared after the latest deployment of my checkout application.”
+- “Investigate the most frequently occurring production error and show me a representative stack trace.”
+- “Which backend methods or database queries consumed the most time in the last 24 hours?”
+- “Show me the last session for customer `user@example.com` and explain where their experience failed.”
+- “Compare p95 page performance over the last seven days and identify the largest regression.”
 
 ## 🛠️ Tools
 
@@ -227,6 +226,16 @@ Raygun implements the MCP authorization flow for HTTP clients. The server advert
 
 Access is tied to the Raygun user, plan, and scopes approved on the consent screen. Compatible clients securely store and refresh their own tokens.
 
+Each OAuth connection grants access to one Raygun plan. Add another Raygun MCP configuration and authorize it separately when you need to work with a different plan.
+
+### Security and access
+
+- OAuth never gives the client more access than the signed-in Raygun user already has.
+- Read and write access is controlled by the scopes approved during OAuth or assigned to the PAT.
+- Some tools can change Raygun data, including error statuses, deployments, invitations, comments, and ingestion API keys. Review write actions before approving them in your MCP client.
+- Application tools can return or rotate ingestion API keys. Treat returned keys as credentials; rotating a key immediately invalidates the previous one.
+- Tool results may be included in conversations processed by your chosen AI client or model provider. Follow your organization's policies for sharing diagnostic and customer data.
+
 ### Obtaining a Personal Access Token
 
 PATs remain available when OAuth is not suitable:
@@ -250,6 +259,7 @@ The Raygun MCP server enables AI assistants to investigate Crash Reporting, RUM,
 ## 🔗 Resources
 
 - 📚 [Raygun Documentation](https://raygun.com/documentation/)
+- 📘 [Raygun MCP Setup Guide](https://raygun.com/documentation/product-guides/raygun-mcp-server/)
 - 🔌 [Raygun API Reference](https://raygun.com/documentation/product-guides/raygun-api/)
 - 🤖 [Model Context Protocol](https://modelcontextprotocol.io/)
 - 🐛 [Report Issues](https://github.com/MindscapeHQ/mcp-server-raygun/issues)
