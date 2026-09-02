@@ -2,16 +2,16 @@
 
 # 🔭 Raygun MCP Server
 
-### Access your crash reporting data in Raygun with AI assistants
+### Investigate errors and performance in Raygun with AI assistants
 
 [![MCP](https://img.shields.io/badge/MCP-Remote%20Server-blue?logo=anthropic&logoColor=white)](https://modelcontextprotocol.io/)
 [![API](https://img.shields.io/badge/Raygun%20API-v3-FF6A13?logo=raygun&logoColor=white)](https://raygun.com/documentation/product-guides/raygun-api/)
 [![Status](https://img.shields.io/badge/Status-Production-success?logo=checkmarx&logoColor=white)](https://api.raygun.com/v3/mcp)
 [![Docs](https://img.shields.io/badge/Docs-Available-informational?logo=gitbook&logoColor=white)](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)
 
-A remote Model Context Protocol (MCP) server that connects AI assistants to your crash reporting and real user monitoring data in Raygun through natural language conversations.
+A remote Model Context Protocol (MCP) server that connects AI assistants to Raygun Crash Reporting, Real User Monitoring, and Application Performance Monitoring.
 
-**[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)** • **[🔑 Get API Token](https://app.raygun.com/user/tokens)**
+**[📚 Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md)** • **[🚀 Quick Start](#getting-started)** • **[🔐 Authentication](#authentication)**
 
 </div>
 
@@ -22,103 +22,78 @@ A remote Model Context Protocol (MCP) server that connects AI assistants to your
 - 🐛 **Error Management** - Investigate, resolve, and track application errors and crashes with full stack traces and context
 - 🚀 **Deployment Tracking** - Monitor releases and correlate errors with deployments to identify problematic changes
 - ⚡ **Performance Insights** - Analyze page load times, user metrics, and performance trends over time
+- 🔬 **APM Investigation** - Find backend hotspots, recurring performance issues, and slow traces
 - 👥 **User Monitoring** - Track customer sessions, behavior patterns, and identify affected users
 - 🤝 **Team Collaboration** - Manage invitations and coordinate error resolution across your team
 - 📊 **Metrics & Analytics** - Time-series analysis and distribution histograms for errors and performance
 
 ## 📋 Requirements
 
-- 🔐 A [Raygun account](https://raygun.com/) with an active subscription
-- 🔑 A [Raygun Personal Access Token (PAT)](https://app.raygun.com/user/tokens)
+- A [Raygun account](https://raygun.com/) with an active subscription
+- An MCP client with OAuth support, or a [Raygun Personal Access Token](https://app.raygun.com/user/tokens)
 
 ## 🚀 Getting Started
 
-The Raygun MCP server is hosted remotely at `https://api.raygun.com/v3/mcp`. 
+The Raygun MCP server is hosted at:
 
-> **💡 Tip:** Choose your AI assistant below and follow the configuration instructions. Don't forget to replace `YOUR_PAT_TOKEN` with your actual Raygun Personal Access Token!
+```text
+https://api.raygun.com/v3/mcp
+```
+
+### OAuth (recommended)
+
+Add the URL as a Streamable HTTP server without an `Authorization` header. On first connection, your MCP client will open Raygun in your browser so you can sign in, select a plan, review the requested permissions, and authorize access.
 
 <details>
-<summary>Amp</summary>
-
-**Guide:** [Amp MCP Documentation](https://ampcode.com/manual#mcp)
+<summary>Codex</summary>
 
 ```bash
-amp mcp add raygun --header "Authorization=Bearer YOUR_PAT_TOKEN" https://api.raygun.com/v3/mcp
+codex mcp add raygun --url https://api.raygun.com/v3/mcp
+codex mcp login raygun
 ```
+
+You can also add a Streamable HTTP server in the ChatGPT desktop app and select **Authenticate**.
 
 </details>
 
 <details>
 <summary>Claude Code</summary>
 
-**Guide:** [Claude Code MCP Documentation](https://docs.claude.com/en/docs/claude-code/mcp)
-
 ```bash
-claude mcp add --transport http raygun https://api.raygun.com/v3/mcp --header "Authorization: Bearer YOUR_PAT_TOKEN"
+claude mcp add --transport http raygun https://api.raygun.com/v3/mcp
 ```
 
-</details>
-
-<details>
-<summary>Cline</summary>
-
-**Guide:** [Cline MCP Documentation](https://docs.cline.bot/mcp/connecting-to-a-remote-server)
-
-Use `https://api.raygun.com/v3/mcp` and your PAT token
+Run `/mcp` in Claude Code and follow the browser authentication flow.
 
 </details>
 
 <details>
-<summary>Codex</summary>
-
-**Guide:** [Codex MCP Documentation](https://developers.openai.com/codex/mcp/)
-
-```toml
-[mcp_servers.raygun]
-command = "npx"
-args = ["mcp-remote", "https://api.raygun.com/v3/mcp", "--header", "Authorization: Bearer YOUR_PAT_TOKEN"]
-```
-
-</details>
-
-<details>
-<summary>Cursor</summary>
-
-Go to `Cursor Settings` → `MCP` → `New MCP Server`
+<summary>Cursor, VS Code, and other JSON-based clients</summary>
 
 ```json
 {
   "mcpServers": {
-    "Raygun": {
-      "url": "https://api.raygun.com/v3/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_PAT_TOKEN"
-      }
+    "raygun": {
+      "type": "http",
+      "url": "https://api.raygun.com/v3/mcp"
     }
   }
 }
 ```
 
-</details>
-
-<details>
-<summary>Gemini CLI</summary>
-
-```bash
-gemini mcp add --transport http raygun https://api.raygun.com/v3/mcp --header "Authorization: Bearer YOUR_PAT_TOKEN"
-```
+VS Code uses `"servers"` instead of `"mcpServers"` as the top-level property. Clients supporting MCP OAuth will prompt you to authenticate.
 
 </details>
 
-<details>
-<summary>JetBrains AI Assistant</summary>
+### Personal Access Token
 
-**Guide:** [JetBrains AI Assistant MCP Documentation](https://www.jetbrains.com/help/ai-assistant/mcp.html#connect-to-an-mcp-server)
+PAT authentication remains supported for clients without MCP OAuth support and for automation. Send the token as a Bearer credential:
 
 ```json
 {
   "mcpServers": {
-    "Raygun": {
+    "raygun": {
+      "type": "http",
       "url": "https://api.raygun.com/v3/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_PAT_TOKEN"
@@ -127,53 +102,6 @@ gemini mcp add --transport http raygun https://api.raygun.com/v3/mcp --header "A
   }
 }
 ```
-
-</details>
-
-<details>
-<summary>VS Code</summary>
-
-**Guide:** [VS Code MCP Servers](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
-
-```json
-{
-  "servers": {
-    "raygun": {
-      "url": "https://api.raygun.com/v3/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_PAT_TOKEN"
-      }
-    }
-  }
-}
-```
-
-</details>
-
-<details>
-<summary>Zed</summary>
-
-**Guide:** [Zed MCP Documentation](https://zed.dev/docs/ai/mcp)
-
-```json
-{
-  "context_servers": {
-    "raygun": {
-      "source": "custom",
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://api.raygun.com/v3/mcp",
-        "--header",
-        "Authorization: Bearer YOUR_PAT_TOKEN"
-      ],
-      "env": {}
-    }
-  }
-}
-```
-
-</details>
 
 ### 💬 Your First Prompt
 
@@ -209,11 +137,13 @@ The Raygun MCP server provides the following categories of tools:
 <summary>🐛 Error Management</summary>
 
 - `error_groups_list` - List error groups within an application
+- `error_groups_search` - Search occurrences by error, stack trace, URL, version, user, tags, or custom data
 - `error_group_investigate` - Get complete details about a specific error group
 - `error_group_update_status` - Change error group status (resolve, ignore, activate)
 - `error_group_add_comment` - Add investigation notes to an error group
-- `error_instances_browse` - Browse individual error occurrences
-- `error_instance_get_details` - Get full stack trace and context for an error instance
+- `error_group_read_comments` - Review existing investigation notes
+- `error_group_instances_list` - List occurrences in an error group
+- `error_instance_get` - Get the full stack trace and context for an occurrence
 
 </details>
 
@@ -234,6 +164,18 @@ The Raygun MCP server provides the following categories of tools:
 - `customers_search` - Search customers by name, email, or identifier
 - `customer_investigate` - Get customer profile, recent error groups, and sessions
 - `sessions_list` - List user sessions with environment and device data
+- `session_investigate` - Inspect a session's environment, errors, and page views
+
+</details>
+
+<details>
+<summary>🔬 Application Performance Monitoring</summary>
+
+- `apm_issues_search` - Find recurring backend performance issues and anti-patterns
+- `apm_issue_investigate` - Inspect an issue's metrics and affected traces
+- `apm_traces_search` - Find slow or failing backend requests
+- `apm_trace_investigate` - Inspect profiler threads and significant calls in a trace
+- `apm_hotspots_search` - Rank slow methods, database queries, and external calls
 
 </details>
 
@@ -259,19 +201,25 @@ The Raygun MCP server provides the following categories of tools:
 
 For detailed documentation on each tool, see the [Tool Reference](https://github.com/MindscapeHQ/mcp-server-raygun/blob/main/TOOLS.md).
 
-## 🔑 Configuration
+## 🔐 Authentication
+
+### OAuth
+
+Raygun implements the MCP authorization flow for HTTP clients. The server advertises its authorization server through OAuth Protected Resource Metadata, and compatible clients register themselves automatically using Client ID Metadata Documents or Dynamic Client Registration.
+
+Access is tied to the Raygun user, plan, and scopes approved on the consent screen. Compatible clients securely store and refresh their own tokens.
 
 ### Obtaining a Personal Access Token
 
-To use the Raygun MCP server, you need a Raygun Personal Access Token (PAT):
+PATs remain available when OAuth is not suitable:
 
 1. Navigate to [**Raygun Personal Access Tokens**](https://app.raygun.com/user/tokens)
 2. Click **Create New Token**
 3. Give your token a descriptive name (e.g., "MCP Server Access")
 4. Select the appropriate permissions for your use case
-5. Copy the generated token and use it in your MCP configuration
+5. Copy the generated token and send it as `Authorization: Bearer YOUR_PAT_TOKEN`
 
-> **⚠️ Important:** Replace `YOUR_PAT_TOKEN` in the configuration examples above with your actual token. Keep your token secure and never commit it to version control!
+Keep PATs secure and never commit them to version control.
 
 For more details, see the [Raygun API documentation](https://raygun.com/documentation/product-guides/raygun-api/).
 
@@ -279,7 +227,7 @@ For more details, see the [Raygun API documentation](https://raygun.com/document
 
 ## 📖 About
 
-The Raygun MCP server enables AI coding assistants to access and analyze your crash reporting and real user monitoring data in Raygun, helping you investigate errors, track deployments, analyze performance, and manage your application monitoring workflow—all through natural language conversations.
+The Raygun MCP server enables AI assistants to investigate Crash Reporting, RUM, and APM data; track deployments; analyze performance; and manage application monitoring through natural-language conversations.
 
 ## 🔗 Resources
 
