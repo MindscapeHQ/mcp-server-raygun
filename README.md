@@ -44,6 +44,8 @@ https://api.raygun.com/v3/mcp
 
 Add the URL as a Streamable HTTP server without an `Authorization` header. On first connection, your MCP client will open Raygun in your browser so you can sign in, select a plan, review the requested permissions, and authorize access.
 
+You do not need to supply an OAuth client ID or client secret. Raygun supports automatic client registration.
+
 <details>
 <summary>Codex</summary>
 
@@ -52,7 +54,7 @@ codex mcp add raygun --url https://api.raygun.com/v3/mcp
 codex mcp login raygun
 ```
 
-You can also add a Streamable HTTP server in the ChatGPT desktop app and select **Authenticate**.
+In the ChatGPT desktop app, open **Settings > MCP servers**, select **Add server**, choose **Streamable HTTP**, and enter the Raygun endpoint. Save and restart the app, then select **Authenticate** for Raygun.
 
 </details>
 
@@ -68,11 +70,28 @@ Run `/mcp` in Claude Code and follow the browser authentication flow.
 </details>
 
 <details>
-<summary>Cursor, VS Code, and other JSON-based clients</summary>
+<summary>Cursor</summary>
 
 ```json
 {
   "mcpServers": {
+    "raygun": {
+      "url": "https://api.raygun.com/v3/mcp"
+    }
+  }
+}
+```
+
+Cursor will prompt you to authenticate when it connects.
+
+</details>
+
+<details>
+<summary>VS Code</summary>
+
+```json
+{
+  "servers": {
     "raygun": {
       "type": "http",
       "url": "https://api.raygun.com/v3/mcp"
@@ -81,19 +100,18 @@ Run `/mcp` in Claude Code and follow the browser authentication flow.
 }
 ```
 
-VS Code uses `"servers"` instead of `"mcpServers"` as the top-level property. Clients supporting MCP OAuth will prompt you to authenticate.
+VS Code will prompt you to authenticate when it connects.
 
 </details>
 
 ### Personal Access Token
 
-PAT authentication remains supported for clients without MCP OAuth support and for automation. Send the token as a Bearer credential:
+PAT authentication remains supported for clients without MCP OAuth support and for automation. The following example uses Cursor's configuration format; other clients use the same `Authorization` header in their HTTP server configuration:
 
 ```json
 {
   "mcpServers": {
     "raygun": {
-      "type": "http",
       "url": "https://api.raygun.com/v3/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_PAT_TOKEN"
