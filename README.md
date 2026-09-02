@@ -42,8 +42,8 @@ https://api.raygun.com/v3/mcp
 
 Raygun hosts and updates the service, so there is no package or local server to install.
 
-[![Install in Cursor](https://img.shields.io/badge/Cursor-Install_Raygun_MCP-111111?logo=cursor&logoColor=white)](cursor://anysphere.cursor-deeplink/mcp/install?name=raygun&config=eyJ1cmwiOiJodHRwczovL2FwaS5yYXlndW4uY29tL3YzL21jcCJ9)
-[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Raygun_MCP-0098FF?logo=visualstudiocode&logoColor=white)](vscode:mcp/install?%7B%22name%22%3A%22raygun%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapi.raygun.com%2Fv3%2Fmcp%22%7D)
+[![Install in Cursor](https://img.shields.io/badge/Cursor-Install_Raygun_MCP-111111?logo=cursor&logoColor=white)](https://cursor.com/en/install-mcp?name=raygun&config=eyJ1cmwiOiJodHRwczovL2FwaS5yYXlndW4uY29tL3YzL21jcCJ9)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Raygun_MCP-0098FF?logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=raygun&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapi.raygun.com%2Fv3%2Fmcp%22%7D)
 
 ### OAuth (recommended)
 
